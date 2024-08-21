@@ -8,6 +8,27 @@ def user_is_authenticated(username,password):
     else:
         print ('unknown username or password')
 
+def ask_music_question(artist,initials,answer):
+    score=0
+    answer1=False
+    questionattempts=0
+    while answer1==False and questionattempts <2:
+        print('the artist for round one is ' + artist)
+        song=input('the song initials are ' + initials)
+
+        if song.lower() == answer :
+            print('correct')
+            answer1=True
+            score=score + 3 if questionattempts == 0 else 1
+        else:    
+            print('incorrect')
+            questionattempts = questionattempts + 1
+            if questionattempts == 2:
+                print('no more attempts')
+                exit()
+    return score
+
+
 authenticated=False
 attempts=0
 
@@ -27,23 +48,13 @@ while not authenticated and attempts < 3:
 
 if authenticated:
     print('Welcome to the Music Quiz!')
-    print('Here\'s how to play')
-
+    print('Here\'s how to play ')
     score=0
-    answer1=False
-    questionattempts=0
-    while answer1==False and questionattempts <2:
-        print('the artist for round one is taylor swift')
-        song=input('the song initials are s---- i- o--')
+    score = score + ask_music_question('taylor swift','s---- i- o--','shake it off')
+    score = score + ask_music_question('justin bieber','b---','baby')
+    #score = score + ask_music_question('adele','s--- f--','set fire to the rain')
+    #score = score + ask_music_question('rihanna','u---- a---','umbrella')
+    #score = score + ask_music_question('katy perry','r---','roar')
+    print('your score is ' + str(score))
 
-        if song.lower() == 'shake it off':
-            print('correct')
-            answer1=True
-            score=score + 3 if questionattempts == 0 else 1
-        else:    
-            print('incorrect')
-            questionattempts = questionattempts + 1
-            if questionattempts == 2:
-                print('no more attempts')
-                exit()
-
+    
