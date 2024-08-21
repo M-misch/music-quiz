@@ -13,7 +13,7 @@ def ask_music_question(artist,initials,answer):
     answer1=False
     questionattempts=0
     while answer1==False and questionattempts <2:
-        print('the artist for round one is ' + artist)
+        print('the artist for this round is ' + artist)
         song=input('the song initials are ' + initials)
 
         if song.lower() == answer :
