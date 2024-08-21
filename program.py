@@ -48,7 +48,7 @@ while not authenticated and attempts < 3:
 
 if authenticated:
     print('Welcome to the Music Quiz!')
-    print('Here\'s how to play ')
+    print('Here\'s how to play the quiz')
     score=0
     score = score + ask_music_question('taylor swift','s---- i- o--','shake it off')
     score = score + ask_music_question('justin bieber','b---','baby')
