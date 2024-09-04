@@ -23,7 +23,7 @@ def ask_music_question(artist,initials,answer):
     questionattempts=0
     while answer1==False and questionattempts <2:
         print('the artist for this round is ' + artist)
-        song=input('the song initials are ' + initials)
+        song=input('the song initials are ' + initials + ' enter your guess here ')
 
         if song.lower() == answer :
             print('correct')
@@ -57,15 +57,32 @@ while not authenticated and attempts < 3:
 
 if authenticated:
     print('Welcome to the Music Quiz!')
-    print('Here\'s how to play the quiz')
+    print('Here\'s how to play the quiz an artist and song initials will be displayed on the screen, guess the song to collect point ')
     score=0
     score = score + ask_music_question('taylor swift','s---- i- o--','shake it off')
-    score = score + ask_music_question('justin bieber','b---','baby')
-    #score = score + ask_music_question('adele','s--- f--','set fire to the rain')
-    #score = score + ask_music_question('rihanna','u---- a---','umbrella')
-    #score = score + ask_music_question('katy perry','r---','roar')
+    score = score + ask_music_question('Kanye west','r------','runaway')
+    score = score + ask_music_question('rihanna','u-------','umbrella')
+    score = score + ask_music_question('katy perry','r---','roar')
     print('your score is ' + str(score))
+    #savescore(username,score)
 
     
 
-#print(checkUserInFile('Mischa123','Password123'))
+# def savescore (username, score):
+#     f = open('users.txt','r')
+#     line = f.readline()
+#     newfilecontent = ''
+#     while line and len(line) > 0:
+#         userinfo = line.split()
+#         if username == userinfo[0]:
+#             newfilecontent = newfilecontent + userinfo[0] + ' ' + userinfo[1] + ' ' + str(score) + '\n'
+#         else:
+#             newfilecontent = newfilecontent + line + '\n' 
+            
+#         line = f.readline()
+#     f.close()
+#     f = open('users.txt','w')
+#     f.write(newfilecontent)
+#     f.close()
+
+# savescore('Anouk',1)
