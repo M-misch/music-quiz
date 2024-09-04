@@ -2,11 +2,20 @@ def badrange_check(to_check):
     if len(to_check) > 15 or len(to_check) < 5 or to_check == None:
         return True
 
-def user_is_authenticated(username,password):
-    if username == 'Mischa123' and password == 'Password123':
-        return True
-    else:
-        print ('unknown username or password')
+def checkUserInFile(username,password):
+    f = open('users.txt','r')
+    line = f.readline()
+    userinfomatch = False
+    while line:
+        userinfo = line.split()
+        if username == userinfo[0] and password == userinfo[1]:
+            userinfomatch=True
+            print(userinfo[0]+ ', you have a score of ' + userinfo[2])
+        line = f.readline()
+    f.close()
+
+    return userinfomatch
+
 
 def ask_music_question(artist,initials,answer):
     score=0
@@ -39,7 +48,7 @@ while not authenticated and attempts < 3:
     if badrange_check(username) or badrange_check(password):
         print('username and password must be at least 5 characters and at most 15 characters')
         attempts = attempts + 1
-    elif user_is_authenticated(username,password):
+    elif checkUserInFile(username,password):
         print('login successful')
         authenticated=True
     else:
@@ -58,3 +67,5 @@ if authenticated:
     print('your score is ' + str(score))
 
     
+
+#print(checkUserInFile('Mischa123','Password123'))
