@@ -37,6 +37,23 @@ def ask_music_question(artist,initials,answer):
                 exit()
     return score
 
+def savescore (username, score):
+    f = open('users.txt','r')
+    line = f.readline()
+    newfilecontent = ''
+    while line and len(line) > 1:
+        userinfo = line.split()
+        if username == userinfo[0]:
+            newfilecontent = newfilecontent + userinfo[0] + ' ' + userinfo[1] + ' ' + str(score) + '\n'
+        else:
+            newfilecontent = newfilecontent + line 
+        line = f.readline()
+    f.close()
+    f = open('users.txt','w')
+    f.write(newfilecontent)
+    f.close()
+
+
 
 authenticated=False
 attempts=0
@@ -64,25 +81,6 @@ if authenticated:
     score = score + ask_music_question('rihanna','u-------','umbrella')
     score = score + ask_music_question('katy perry','r---','roar')
     print('your score is ' + str(score))
-    #savescore(username,score)
+    savescore(username,score)
 
-    
 
-# def savescore (username, score):
-#     f = open('users.txt','r')
-#     line = f.readline()
-#     newfilecontent = ''
-#     while line and len(line) > 0:
-#         userinfo = line.split()
-#         if username == userinfo[0]:
-#             newfilecontent = newfilecontent + userinfo[0] + ' ' + userinfo[1] + ' ' + str(score) + '\n'
-#         else:
-#             newfilecontent = newfilecontent + line + '\n' 
-            
-#         line = f.readline()
-#     f.close()
-#     f = open('users.txt','w')
-#     f.write(newfilecontent)
-#     f.close()
-
-# savescore('Anouk',1)
